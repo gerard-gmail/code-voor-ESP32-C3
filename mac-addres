@@ -1,0 +1,22 @@
+#include <Arduino.h>
+#include <WiFi.h>
+#include <BLEDevice.h>   // <- belangrijk!
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+
+  Serial.println("ESP32-C3 MAC-adressen uitlezen...");
+
+  // Wi-Fi MAC-adres
+  Serial.print("WiFi MAC: ");
+  Serial.println(WiFi.macAddress());
+
+  // BLE MAC-adres
+  BLEDevice::init("");   // BLE initialiseren
+  Serial.print("Bluetooth MAC: ");
+  Serial.println(BLEDevice::getAddress().toString().c_str());
+}
+
+void loop() {
+}
