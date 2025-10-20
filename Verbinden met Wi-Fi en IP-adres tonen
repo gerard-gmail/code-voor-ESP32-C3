@@ -1,0 +1,30 @@
+#include <Arduino.h>
+#include <WiFi.h>
+
+// Vul hier je eigen Wi-Fi gegevens in:
+const char* ssid = "bletchley";
+const char* password = "laptop!internet";
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+
+  Serial.println("Verbinding maken met Wi-Fi...");
+  WiFi.begin(ssid, password);
+
+  // Wachten tot verbonden
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("\n✅ Verbonden!");
+  Serial.print("Wi-Fi MAC: ");
+  Serial.println(WiFi.macAddress());
+
+  Serial.print("IP-adres: ");
+  Serial.println(WiFi.localIP());
+}
+
+void loop() {
+}
